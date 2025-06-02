@@ -260,7 +260,9 @@ section h2 {
 
 /* Buttons */
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     border-radius: 30px;
     text-decoration: none;
@@ -268,6 +270,10 @@ section h2 {
     transition: var(--transition);
     margin: 0.5rem;
     font-size: 0.95rem;
+}
+
+.btn i {
+    font-size: 1rem;
 }
 
 .primary {
@@ -432,54 +438,39 @@ h2 {
 }
 
 .contact-item {
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    transition: var(--transition);
-    word-break: break-word;
-    min-width: 0;
-    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
     text-decoration: none;
     color: var(--text-color);
-    display: block;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-}
-
-.contact-item:active {
-    transform: scale(0.98);
+    background: var(--card-bg);
+    margin-bottom: 1rem;
 }
 
 .contact-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
-    background: var(--primary-color);
-}
-
-.contact-item:hover i,
-.contact-item:hover p {
-    color: var(--text-color);
-}
-
-.contact-item p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    color: var(--text-color);
-    transition: var(--transition);
-    pointer-events: none;
+    transform: translateY(-2px);
+    background: var(--card-hover);
 }
 
 .contact-item i {
     font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-    display: block;
-    transition: var(--transition);
-    pointer-events: none;
+    color: var(--accent-color);
+}
+
+.contact-item[download] {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.contact-item[download]:hover {
+    background: var(--accent-hover);
+}
+
+.contact-item[download] i {
+    color: var(--bg-color);
 }
 
 .social-links {
@@ -670,8 +661,9 @@ footer {
     }
 
     .cta-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 0.5rem;
-        margin-top: 0.2rem;
     }
     
     section {
@@ -765,6 +757,12 @@ footer {
     section h2 {
         margin-bottom: 2rem;
         font-size: 2rem;
+    }
+
+    .btn {
+        margin: 0.25rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
     }
 }
 
