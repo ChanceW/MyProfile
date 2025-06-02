@@ -129,7 +129,7 @@ section h2 {
 
 /* Hero section specific */
 .hero {
-    padding: 0;
+    padding-top: 5.5rem;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -635,6 +635,7 @@ footer {
     }
 
     .hero {
+        padding-top: 4.5rem;
         min-height: 100vh;
         padding: 0;
     }
