@@ -2,7 +2,12 @@
 nixPkgs = ["nodejs"]
 
 [start]
-cmd = "npx serve -s ."
+cmd = "npx serve -s . --cors --no-clipboard --no-request-logging"
 
 [phases.install]
-cmds = ["npm install -g serve"] 
+cmds = ["npm install -g serve"]
+
+[headers]
+"/*.css" = { "Cache-Control" = "no-cache, no-store, must-revalidate" }
+"/*.js" = { "Cache-Control" = "no-cache, no-store, must-revalidate" }
+"/*.html" = { "Cache-Control" = "no-cache, no-store, must-revalidate" } 
