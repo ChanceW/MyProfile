@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = []
+
+[start]
+cmd = "npx serve -s ."
+
+[phases.install]
+cmds = ["npm install -g serve"] 
