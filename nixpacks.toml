@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = []
+nixPkgs = ["nodejs"]
 
 [start]
 cmd = "npx serve -s ."
