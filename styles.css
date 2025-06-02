@@ -95,15 +95,47 @@ body {
     width: 100%;
 }
 
-/* Hero Section */
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+/* Section Base Styles */
+section {
+    padding: 5rem 0;
+    position: relative;
+    width: 100%;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--text-color);
+}
+
+/* Update existing section styles */
+.about-content,
+.projects-grid,
+.skills-grid,
+.contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero section specific */
 .hero {
+    padding: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 2rem;
     position: relative;
     background: linear-gradient(45deg, var(--background-dark), var(--secondary-color));
 }
@@ -704,6 +736,23 @@ footer {
     
     .project-content h3 {
         font-size: 1.3rem;
+    }
+
+    .container,
+    .about-content,
+    .projects-grid,
+    .skills-grid,
+    .contact-content {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    section h2 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
     }
 }
 
