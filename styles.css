@@ -104,7 +104,7 @@ body {
 }
 
 /* Section Base Styles */
-section {
+section:not(.hero) {
     padding: 5rem 0;
     position: relative;
     width: 100%;
@@ -130,7 +130,8 @@ section h2 {
 /* Hero section specific */
 .hero {
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -138,14 +139,18 @@ section h2 {
     text-align: center;
     position: relative;
     background: linear-gradient(45deg, var(--background-dark), var(--secondary-color));
+    margin: 0;
 }
 
 .hero-content {
     max-width: 800px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    padding: 0 2rem;
+    margin: 0 auto;
 }
 
 .profile-image {
@@ -625,7 +630,13 @@ footer {
     }
     
     .hero-content {
+        padding: 0 1rem;
         gap: 0.4rem;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding: 0;
     }
 
     .profile-image {
