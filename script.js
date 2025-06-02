@@ -84,7 +84,7 @@ function updateExperience() {
     const startYear = 2012;
     const currentYear = new Date().getFullYear();
     const years = currentYear - startYear;
-    const experienceElement = document.querySelector('.stat-item .number');
+    const experienceElement = document.querySelector('.experience-counter .number');
     if (experienceElement) {
         experienceElement.textContent = years + '+';
     }
@@ -99,8 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function animateStats() {
     if (animated) return;
     
-    stats.forEach(stat => {
-        const target = parseInt(stat.textContent);
+    const experienceElement = document.querySelector('.experience-counter .number');
+    if (experienceElement) {
+        const target = parseInt(experienceElement.textContent);
         let current = 0;
         const increment = target / 50;
         const duration = 2000;
@@ -109,21 +110,21 @@ function animateStats() {
         const counter = setInterval(() => {
             current += increment;
             if (current >= target) {
-                stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                experienceElement.textContent = target + '+';
                 clearInterval(counter);
             } else {
-                stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                experienceElement.textContent = Math.floor(current) + '+';
             }
         }, step);
-    });
+    }
     
     animated = true;
 }
 
-// Observe stats section
-const statsSection = document.querySelector('.stats');
-if (statsSection) {
-    const statsObserver = new IntersectionObserver((entries) => {
+// Observe hero section for animation
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+    const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 animateStats();
@@ -131,7 +132,7 @@ if (statsSection) {
         });
     }, observerOptions);
     
-    statsObserver.observe(statsSection);
+    heroObserver.observe(heroSection);
 }
 
 // Add hover effect to skill cards
