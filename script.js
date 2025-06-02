@@ -13,26 +13,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Navbar background change on scroll
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return; // Exit if navbar doesn't exist
+    
+    let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        return;
-    }
-    
-    if (currentScroll > lastScroll) {
-        // Scrolling down
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-    } else {
-        // Scrolling up
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-    }
-    
-    lastScroll = currentScroll;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            return;
+        }
+        
+        if (currentScroll > lastScroll) {
+            // Scrolling down
+            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+        } else {
+            // Scrolling up
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+        }
+        
+        lastScroll = currentScroll;
+    });
 });
 
 // Intersection Observer for fade-in animations
