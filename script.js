@@ -133,30 +133,50 @@ document.querySelectorAll('.skill-card').forEach(card => {
 // Mobile Menu Toggle
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
+let isMenuOpen = false;
 
-mobileMenuBtn.addEventListener('click', () => {
+function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
     navLinks.classList.toggle('active');
     const icon = mobileMenuBtn.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        const icon = mobileMenuBtn.querySelector('i');
+    
+    // Update icon
+    if (isMenuOpen) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    } else {
         icon.classList.add('fa-bars');
         icon.classList.remove('fa-times');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Toggle menu on button click
+mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to document
+    toggleMenu();
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (isMenuOpen) {
+            toggleMenu();
+        }
     });
 });
 
-// Close mobile menu when clicking outside
+// Close menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        navLinks.classList.remove('active');
-        const icon = mobileMenuBtn.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
+    if (isMenuOpen && !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        toggleMenu();
+    }
+});
+
+// Close menu on window resize if open
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && isMenuOpen) {
+        toggleMenu();
     }
 }); 
