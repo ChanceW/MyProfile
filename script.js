@@ -16,17 +16,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return; // Exit if navbar doesn't exist
-
+    
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-
+        
         if (currentScroll <= 0) {
             navbar.style.background = 'rgba(10, 10, 10, 0.95)';
             return;
         }
-
+        
         if (currentScroll > lastScroll) {
             // Scrolling down
             navbar.style.background = 'rgba(10, 10, 10, 0.98)';
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Scrolling up
             navbar.style.background = 'rgba(10, 10, 10, 0.95)';
         }
-
+        
         lastScroll = currentScroll;
     });
 });
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Update experience counter animation
 function animateStats() {
     if (animated) return;
-
+    
     const experienceElement = document.querySelector('.experience-counter .number');
     if (experienceElement) {
         const target = parseInt(experienceElement.textContent);
@@ -94,7 +94,7 @@ function animateStats() {
         const increment = target / 50;
         const duration = 2000;
         const step = duration / 50;
-
+        
         const counter = setInterval(() => {
             current += increment;
             if (current >= target) {
@@ -105,7 +105,7 @@ function animateStats() {
             }
         }, step);
     }
-
+    
     animated = true;
 }
 
@@ -119,7 +119,7 @@ if (heroSection) {
             }
         });
     }, observerOptions);
-
+    
     heroObserver.observe(heroSection);
 }
 
@@ -128,7 +128,7 @@ document.querySelectorAll('.skill-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-10px)';
     });
-
+    
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0)';
     });
@@ -143,7 +143,7 @@ function toggleMenu() {
     isMenuOpen = !isMenuOpen;
     navLinks.classList.toggle('active');
     const icon = mobileMenuBtn.querySelector('i');
-
+    
     // Update icon
     if (isMenuOpen) {
         icon.classList.remove('fa-bars');
@@ -183,40 +183,4 @@ window.addEventListener('resize', () => {
     if (window.innerWidth > 768 && isMenuOpen) {
         toggleMenu();
     }
-});
-
-// About Me Text Configuration
-const aboutMeConfig = {
-    defaultText: "Hi, I'm Chance Williams, a passionate Fullstack Developer with expertise in building modern, scalable web applications. My approach combines technical excellence with creative problem-solving to deliver exceptional digital experiences.",
-    
-    // Function to update the about me text
-    updateText: function (newText) {
-        try {
-            const aboutMeElement = document.getElementById('aboutMeText');
-            if (!aboutMeElement) {
-                console.error('About me element not found in the DOM');
-                return;
-            }
-            aboutMeElement.textContent = newText;
-        } catch (error) {
-            console.error('Error updating about me text:', error);
-        }
-    },
-    
-    // Function to reset to default text
-    resetToDefault: function () {
-        this.updateText(this.defaultText);
-    }
-};
-
-// Make aboutMeConfig globally accessible
-window.aboutMeConfig = aboutMeConfig;
-
-// Set the about me text immediately
-aboutMeConfig.resetToDefault();
-
-// Also set it on DOMContentLoaded as a backup
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded - Setting about me text');
-    aboutMeConfig.resetToDefault();
 }); 
