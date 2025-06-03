@@ -188,15 +188,21 @@ window.addEventListener('resize', () => {
 // About Me Text Configuration
 const aboutMeConfig = {
     defaultText: "Hi, I'm Chance Williams, a passionate Fullstack Developer with expertise in building modern, scalable web applications. My approach combines technical excellence with creative problem-solving to deliver exceptional digital experiences.",
-
+    
     // Function to update the about me text
     updateText: function (newText) {
-        const aboutMeElement = document.getElementById('aboutMeText');
-        if (aboutMeElement) {
+        try {
+            const aboutMeElement = document.getElementById('aboutMeText');
+            if (!aboutMeElement) {
+                console.error('About me element not found in the DOM');
+                return;
+            }
             aboutMeElement.textContent = newText;
+        } catch (error) {
+            console.error('Error updating about me text:', error);
         }
     },
-
+    
     // Function to reset to default text
     resetToDefault: function () {
         this.updateText(this.defaultText);
@@ -206,7 +212,11 @@ const aboutMeConfig = {
 // Make aboutMeConfig globally accessible
 window.aboutMeConfig = aboutMeConfig;
 
-// Initialize about me text on page load
+// Set the about me text immediately
+aboutMeConfig.resetToDefault();
+
+// Also set it on DOMContentLoaded as a backup
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - Setting about me text');
     aboutMeConfig.resetToDefault();
 }); 
