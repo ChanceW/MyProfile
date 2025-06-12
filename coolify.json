@@ -1,0 +1,9 @@
+{
+    "build": {
+        "rebuild": true,
+        "rebuildOnDeploy": true
+    },
+    "deploy": {
+        "autoDeploy": true
+    }
+} 
