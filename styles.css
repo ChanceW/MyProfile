@@ -461,6 +461,14 @@ h2 {
     color: var(--bg-color);
 }
 
+.contact-item p {
+    font-size: 0.95rem;
+    margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 2rem); /* Account for icon width and gap */
+}
+
 .social-links {
     display: flex;
     flex-direction: column;
@@ -783,7 +791,10 @@ footer {
     }
 
     .contact-item p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: calc(100% - 2rem);
     }
 
     .social-links {
@@ -977,6 +988,9 @@ footer {
 .contact-item p {
     font-size: 0.95rem;
     margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 2rem); /* Account for icon width and gap */
 }
 
 .contact-divider {
